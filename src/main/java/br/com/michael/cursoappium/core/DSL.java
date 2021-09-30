@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import io.appium.java_client.MobileElement;
 
 public class DSL {
-
+	
 	private static MobileElement obterElemento(By by) {
 		return getDriver().findElement(by);
 	}
