@@ -2,11 +2,10 @@ package br.com.michael.cursoappium.page;
 
 import org.openqa.selenium.By;
 
-import br.com.michael.cursoappium.core.DSL;
-import br.com.michael.cursoappium.core.DSLFactory;
+import br.com.michael.cursoappium.core.BasePage;
 import io.appium.java_client.MobileBy;
 
-public class FormularioPage {
+public class FormularioPage extends BasePage {
 
 	private static final By campoNomePath = MobileBy.AccessibilityId("nome");
 	private static final By comboVideoGame = MobileBy.xpath("//android.widget.Spinner[@content-desc='console']");
@@ -19,60 +18,59 @@ public class FormularioPage {
 	
 	private static final String validacaoNomeTemplate = "//android.widget.TextView[@text='Nome: %s']";
 	private static final String validacaoVideoGame = "//android.widget.TextView[@text='Console: %s']";
-	private static final DSL dsl = DSLFactory.getDSL();
 	
 	public void escreverNome(String nome) {
-		dsl.escrever(campoNomePath, nome);
+		escrever(campoNomePath, nome);
 	}
 	
 	public String obterTextoCampoNome() {
-		final String campoNomeText = dsl.obterTexto(campoNomePath);
+		final String campoNomeText = obterTexto(campoNomePath);
 		return campoNomeText;
 	}
 	
 	public void escolherItemCombo(String valor) {
-		dsl.selecionarItemCombo(comboVideoGame, valor);
+		selecionarItemCombo(comboVideoGame, valor);
 	}
 	
 	public String obterTextoVideoGameSelecionado() {
-		return dsl.obterTexto(opcaoVideoGameSelecionada);
+		return obterTexto(opcaoVideoGameSelecionada);
 	}
 	
 	public void interagirComCheckbox() {
-		dsl.clicar(checkboxData);
+		clicar(checkboxData);
 	}
 	
 	public void interagirComSwitch() {
-		dsl.clicar(switchHorario);
+		clicar(switchHorario);
 	}
 	
 	public void clicarBotaoSalvar() {
-		dsl.clicar(btnSalvar);
+		clicar(btnSalvar);
 	}
 	
 	public boolean checkboxEstaSelecionada() {
-		return dsl.checkboxEstaSelecionada(checkboxData);
+		return checkboxEstaSelecionada(checkboxData);
 	}
 	
 	public boolean switchEstaAtivado() {
-		return dsl.switchEstaSelecionado(switchHorario);
+		return switchEstaSelecionado(switchHorario);
 	}
 	
 	public boolean textoValidacaoNomeEstaCorreto(String nome) {
-		return dsl.obterTexto(getValidacaoNome(nome)).equals("Nome: " + nome);
+		return obterTexto(getValidacaoNome(nome)).equals("Nome: " + nome);
 	}
 	
 	public boolean textoValidacaoVideoGameEstaCorreto(String videoGame) {
 		videoGame = videoGame.toLowerCase();
-		return dsl.obterTexto(getValidacaoVideoGame(videoGame)).equals("Console: " + videoGame);
+		return obterTexto(getValidacaoVideoGame(videoGame)).equals("Console: " + videoGame);
 	}
 	
 	public boolean textoValidacaoCheckboxEstaCorreto() {
-		return dsl.obterTexto(validacaoSwitch).equals("Switch: Off");
+		return obterTexto(validacaoSwitch).equals("Switch: Off");
 	}
 	
 	public boolean textoValidacaoSwitchEstaCorreto() {
-		return dsl.obterTexto(validacaoCheckbox).equals("Checkbox: Marcado");
+		return obterTexto(validacaoCheckbox).equals("Checkbox: Marcado");
 	}
 	
 	private final By getValidacaoNome(String nome) {

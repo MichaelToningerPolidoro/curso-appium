@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import io.appium.java_client.MobileElement;
 
-public class DSL {
+public class BasePage {
 	
 	private static MobileElement obterElemento(By by) {
 		return getDriver().findElement(by);
@@ -43,4 +43,5 @@ public class DSL {
 	public boolean switchEstaSelecionado(By by) {
 		return Boolean.valueOf(obterElemento(by).getAttribute("checked"));
 	}
+	
 }

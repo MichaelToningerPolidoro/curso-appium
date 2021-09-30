@@ -4,19 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
-import br.com.michael.cursoappium.core.DSL;
-import br.com.michael.cursoappium.core.DSLFactory;
-import br.com.michael.cursoappium.core.DriverFactory;
+import br.com.michael.cursoappium.core.BaseTest;
 import br.com.michael.cursoappium.page.FormularioPage;
 import br.com.michael.cursoappium.page.MenuPage;
-import io.appium.java_client.MobileBy;
 
-public class FormularioTeste {
+public class FormularioTeste extends BaseTest {
 	
 	private static final String NOME = "Michael";
 	private static final String PS4 = "PS4";
@@ -27,11 +22,6 @@ public class FormularioTeste {
 	@Before
 	public void inicializarAppium() {
 		menuPage.acessarFormulario();
-	}
-	
-	@After
-	public void tearDown() {
-		DriverFactory.killDriver();
 	}
 	
 	@Test
