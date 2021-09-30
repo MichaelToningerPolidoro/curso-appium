@@ -1,4 +1,4 @@
-package br.com.michael.cursoappium;
+package br.com.michael.cursoappium.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
