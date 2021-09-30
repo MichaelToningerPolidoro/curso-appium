@@ -50,7 +50,7 @@ public class FormularioTeste {
 	}
 	
 	@After
-	private static void finalizaAppium() {
+	private static void tearDown() {
 		DriverFactory.killDriver();
 	}
 	

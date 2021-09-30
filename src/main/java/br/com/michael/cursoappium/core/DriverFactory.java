@@ -28,7 +28,7 @@ public class DriverFactory {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");
 //		Não precisa pois é android, se fosse IOS sim
-//		desiredCapabilities.setCapability("deviceName", ANDROID_DEVICE_NAME);
+//		desiredCapabilities.setCapability("deviceName", DEVICE_NAME);
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
 		desiredCapabilities.setCapability("appPackage", "com.ctappium");
 		desiredCapabilities.setCapability("appActivity", "com.ctappium.MainActivity");
@@ -48,6 +48,12 @@ public class DriverFactory {
 		if (driver != null) {
 			driver.quit();
 			driver = null;
+		}
+	}
+	
+	public static void restartDriver() {
+		if (driver != null) {
+			driver.resetApp();
 		}
 	}
 }
