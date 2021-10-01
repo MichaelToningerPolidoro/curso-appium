@@ -7,9 +7,14 @@ import io.appium.java_client.MobileBy;
 
 public class MenuPage extends BasePage {
 	
-	private static final By formularioHome = MobileBy.xpath("//android.widget.TextView[@text='Formulário']");
+	private static final By formulario = MobileBy.xpath("//android.widget.TextView[@text='Formulário']");
+	private static final By splash = MobileBy.xpath("//android.widget.TextView[@text='Splash']");
 	
 	public void acessarFormulario() {
-		clicar(formularioHome);
+		clicar(formulario);
+	}
+	
+	public void acessarSplash() {
+		clicar(splash);
 	}
 }
