@@ -17,10 +17,8 @@ public class FormularioPage extends BasePage {
 	private static final By validacaoCheckbox = MobileBy.xpath("//android.widget.TextView[@text='Checkbox: Marcado']");
 	private static final By opcaoVideoGameSelecionada = MobileBy.xpath("//android.widget.Spinner/android.widget.TextView");
 	
-	
 	private static final String validacaoNomeTemplate = "//android.widget.TextView[@text='Nome: %s']";
 	private static final String validacaoVideoGame = "//android.widget.TextView[@text='Console: %s']";
-	
 	
 	public void escreverNome(String nome) {
 		escrever(campoNomePath, nome);
