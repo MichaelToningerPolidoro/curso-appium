@@ -17,4 +17,8 @@ public class MenuPage extends BasePage {
 	public void acessarSplash() {
 		clicar(splash);
 	}
+	
+	public boolean estaNaTelaInicial() {
+		return existeElementoPorTexto("About...");
+	}
 }

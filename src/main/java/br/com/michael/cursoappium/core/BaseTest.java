@@ -30,13 +30,13 @@ public class BaseTest {
 
 	@BeforeClass
 	public static void initialSetup() {
-		deleteScreenshots();
+		//deleteScreenshots();
 	}
 
 	@Before
 	public void setup() {
-		System.out.println("Iniciando gravação de tela");
-		DriverFactory.getDriver().startRecordingScreen();
+		//System.out.println("Iniciando gravação de tela");
+		//DriverFactory.getDriver().startRecordingScreen();
 	}
 
 	@AfterClass
@@ -46,8 +46,8 @@ public class BaseTest {
 
 	@After
 	public void tearDown() {
-		saveVideoRecorded();
-		generateScreenshot();
+		//saveVideoRecorded();
+		//generateScreenshot();
 		DriverFactory.restartAPP();
 	}
 
