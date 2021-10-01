@@ -25,9 +25,7 @@ public class BasePage {
 	}
 	
 	public void selecionarItemCombo(By by, String valor) {
-		//clicando combo
 		obterElemento(by).click();
-		//clicando opção
 		clicarPorTexto(valor);
 	}
 	

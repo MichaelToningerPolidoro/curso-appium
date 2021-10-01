@@ -51,7 +51,7 @@ public class DriverFactory {
 		}
 	}
 	
-	public static void restartDriver() {
+	public static void restartAPP() {
 		if (driver != null) {
 			driver.resetApp();
 		}
