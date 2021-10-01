@@ -36,7 +36,7 @@ public class BaseTest {
 	@Before
 	public void setup() {
 		//System.out.println("Iniciando gravação de tela");
-		//DriverFactory.getDriver().startRecordingScreen();
+		DriverFactory.getDriver().startRecordingScreen();
 	}
 
 	@AfterClass
@@ -46,7 +46,7 @@ public class BaseTest {
 
 	@After
 	public void tearDown() {
-		//saveVideoRecorded();
+		saveVideoRecorded();
 		//generateScreenshot();
 		DriverFactory.restartAPP();
 	}

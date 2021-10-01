@@ -3,11 +3,8 @@ package br.com.michael.cursoappium.core;
 import static br.com.michael.cursoappium.core.DriverFactory.getDriver;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;

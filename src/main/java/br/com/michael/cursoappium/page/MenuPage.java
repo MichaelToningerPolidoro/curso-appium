@@ -7,8 +7,13 @@ import io.appium.java_client.MobileBy;
 
 public class MenuPage extends BasePage {
 	
-	private static final By formulario = MobileBy.xpath("//android.widget.TextView[@text='Formulário']");
-	private static final By splash = MobileBy.xpath("//android.widget.TextView[@text='Splash']");
+	private static final String botoesTemplateXpath = "//android.widget.TextView[@text='%s']";
+	private static final By formulario = getXpath("Formulário");
+	private static final By splash = getXpath("Splash");
+	private static final By alertas = getXpath("Alertas");
+	private static final By seuBarrigaNativo = getXpath("SeuBarriga Nativo");
+	private static final By seuBarrigaHibrido = getXpath("SeuBarriga Híbrido");
+	private static final By accordion = getXpath("Accordion");
 	
 	public void acessarFormulario() {
 		clicar(formulario);
@@ -18,7 +23,27 @@ public class MenuPage extends BasePage {
 		clicar(splash);
 	}
 	
+	public void acessarAlertas() {
+		clicar(alertas);
+	}
+	
+	public void acessarSeuBarrigaNativo() {
+		clicar(seuBarrigaNativo);
+	}
+	
+	public void acessarSeuBarrigaHibrido() {
+		clicar(seuBarrigaHibrido);
+	}
+	
+	public void acessarAccordion() {
+		clicar(accordion);
+	}
+	
 	public boolean estaNaTelaInicial() {
 		return existeElementoPorTexto("About...");
+	}
+	
+	private static final By getXpath(String opcao) {
+		return MobileBy.xpath(String.format(botoesTemplateXpath, opcao));
 	}
 }
