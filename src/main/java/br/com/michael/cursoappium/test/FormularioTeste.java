@@ -65,4 +65,10 @@ public class FormularioTeste extends BaseTest {
 		assertTrue(formularioPage.textoValidacaoCheckboxEstaCorreto());
 		assertTrue(formularioPage.textoValidacaoSwitchEstaCorreto());
 	}
+	
+	@Test
+	public void deveRealizarCadastroDemorado() {
+		formularioPage.escreverNome(NOME);
+		formularioPage.clicarBotaoSalvarDemorado();
+	}
 }

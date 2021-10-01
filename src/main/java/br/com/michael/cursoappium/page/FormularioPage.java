@@ -12,12 +12,15 @@ public class FormularioPage extends BasePage {
 	private static final By checkboxData = MobileBy.className("android.widget.CheckBox");
 	private static final By switchHorario = MobileBy.AccessibilityId("switch");
 	private static final By btnSalvar = MobileBy.AccessibilityId("save");
+	private static final By btnSalvarDemorado = MobileBy.xpath("//android.widget.TextView[@text='SALVAR DEMORADO']");
 	private static final By validacaoSwitch = MobileBy.xpath("//android.widget.TextView[@text='Switch: Off']");
 	private static final By validacaoCheckbox = MobileBy.xpath("//android.widget.TextView[@text='Checkbox: Marcado']");
 	private static final By opcaoVideoGameSelecionada = MobileBy.xpath("//android.widget.Spinner/android.widget.TextView");
 	
+	
 	private static final String validacaoNomeTemplate = "//android.widget.TextView[@text='Nome: %s']";
 	private static final String validacaoVideoGame = "//android.widget.TextView[@text='Console: %s']";
+	
 	
 	public void escreverNome(String nome) {
 		escrever(campoNomePath, nome);
@@ -46,6 +49,10 @@ public class FormularioPage extends BasePage {
 	
 	public void clicarBotaoSalvar() {
 		clicar(btnSalvar);
+	}
+	
+	public void clicarBotaoSalvarDemorado() {
+		clicar(btnSalvarDemorado);
 	}
 	
 	public boolean checkboxEstaSelecionada() {
