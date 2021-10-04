@@ -83,6 +83,7 @@ public class FormularioTeste extends BaseTest {
 	
 	@Test
 	public void deveAlterarHorario() {
-		
+		formularioPage.alterarHorario();
+		assertTrue(formularioPage.horaEstaCorreta());
 	}
 }

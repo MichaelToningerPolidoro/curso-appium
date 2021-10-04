@@ -63,15 +63,11 @@ public class FormularioPage extends BasePage {
 	
 	public void alterarHorario() {
 		clicar(timePicker);
-		//
-		//
+		clicar(MobileBy.AccessibilityId("10"));
+		clicar(MobileBy.AccessibilityId("40"));
+		clicarPorTexto("OK");
 	}
 			
-	
-	public void obterTextoData() {
-		
-	}
-	
 	public boolean checkboxEstaSelecionada() {
 		return checkboxEstaSelecionada(checkboxData);
 	}
@@ -110,6 +106,6 @@ public class FormularioPage extends BasePage {
 	}
 
 	public boolean horaEstaCorreta() {
-		return false;
+		return existeElementoPorTexto("10:40");
 	}
 }
