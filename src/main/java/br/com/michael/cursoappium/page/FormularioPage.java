@@ -16,6 +16,8 @@ public class FormularioPage extends BasePage {
 	private final By validacaoSwitch = MobileBy.xpath("//android.widget.TextView[@text='Switch: Off']");
 	private final By validacaoCheckbox = MobileBy.xpath("//android.widget.TextView[@text='Checkbox: Marcado']");
 	private final By opcaoVideoGameSelecionada = MobileBy.xpath("//android.widget.Spinner/android.widget.TextView");
+	private final By datePicker = MobileBy.xpath("//android.widget.TextView[@text='01/01/2000']");
+	private final By timePicker = MobileBy.xpath("//android.widget.TextView[@text='06:00']");
 	
 	private static final String validacaoNomeTemplate = "//android.widget.TextView[@text='Nome: %s']";
 	private static final String validacaoVideoGame = "//android.widget.TextView[@text='Console: %s']";
@@ -53,6 +55,23 @@ public class FormularioPage extends BasePage {
 		clicar(btnSalvarDemorado);
 	}
 	
+	public void alterarDia() {
+		clicar(datePicker);
+		clicarPorTexto("20");
+		clicarPorTexto("OK");
+	}
+	
+	public void alterarHorario() {
+		clicar(timePicker);
+		//
+		//
+	}
+			
+	
+	public void obterTextoData() {
+		
+	}
+	
 	public boolean checkboxEstaSelecionada() {
 		return checkboxEstaSelecionada(checkboxData);
 	}
@@ -84,5 +103,13 @@ public class FormularioPage extends BasePage {
 	
 	private final By getValidacaoVideoGame(String videoGame) {
 		return MobileBy.xpath(String.format(validacaoVideoGame, videoGame));
+	}
+
+	public boolean dataEstaCorreta() {
+		return existeElementoPorTexto("20/2/2000");
+	}
+
+	public boolean horaEstaCorreta() {
+		return false;
 	}
 }

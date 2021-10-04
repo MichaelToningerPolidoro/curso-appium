@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -70,5 +73,16 @@ public class FormularioTeste extends BaseTest {
 	public void deveRealizarCadastroDemorado() {
 		formularioPage.escreverNome(NOME);
 		formularioPage.clicarBotaoSalvarDemorado();
+	}
+	
+	@Test
+	public void deveAlterarData() {
+		formularioPage.alterarDia();
+		assertTrue(formularioPage.dataEstaCorreta());
+	}
+	
+	@Test
+	public void deveAlterarHorario() {
+		
 	}
 }
