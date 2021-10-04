@@ -55,4 +55,12 @@ public class BasePage {
 		final boolean haElementosEncontrados = !elementosEncontrados.isEmpty();
 		return haElementosEncontrados;
 	}
+	
+	protected void esperar(int millisegundos) {
+		try {
+			DriverFactory.getDriver().wait(millisegundos);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
