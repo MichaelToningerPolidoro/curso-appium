@@ -8,7 +8,7 @@ import br.com.michael.cursoappium.core.BaseTest;
 import br.com.michael.cursoappium.page.AlertPage;
 import br.com.michael.cursoappium.page.MenuPage;
 
-public class AlertTest extends BaseTest {
+public class AlertTeste extends BaseTest {
 	
 	private final AlertPage alertPage = new AlertPage();
 	private final MenuPage menuPage = new MenuPage();
