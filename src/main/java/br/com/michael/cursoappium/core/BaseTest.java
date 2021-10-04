@@ -30,12 +30,12 @@ public class BaseTest {
 
 	@BeforeClass
 	public static void initialSetup() {
-		//deleteScreenshots();
+		deleteEvidence();
 	}
 
 	@Before
 	public void setup() {
-		//System.out.println("Iniciando gravação de tela");
+		System.out.println("Iniciando gravação de tela");
 		DriverFactory.getDriver().startRecordingScreen();
 	}
 
@@ -46,12 +46,12 @@ public class BaseTest {
 
 	@After
 	public void tearDown() {
-		saveVideoRecorded();
-		//generateScreenshot();
+		saveRecordedVideo();
+		generateEndTestScreenshot();
 		DriverFactory.restartAPP();
 	}
 
-	private final void generateScreenshot() {
+	private final void generateEndTestScreenshot() {
 		System.out.println("Guardando print -> " + testName.getMethodName());
 		final String imagePath = getScreenshotCompletePath();
 		TakesScreenshot ts = (TakesScreenshot) DriverFactory.getDriver();
@@ -68,7 +68,7 @@ public class BaseTest {
 		System.out.println("PRINT SALVO!!! -> " + imagePath);
 	}
 
-	private static final void deleteScreenshots() {
+	private static final void deleteEvidence() {
 		System.out.println("Deletando evidências do teste anterior");
 		File directory = new File(SCREENSHOTS_BASE_PATH);
 		File[] listedFiles = directory.listFiles();
@@ -79,7 +79,7 @@ public class BaseTest {
 		System.out.println("Tudo excluído com sucesso!");
 	}
 
-	private final void saveVideoRecorded() {
+	private final void saveRecordedVideo() {
 		System.out.println("Salvando video ...");
 		final String base64String = DriverFactory.getDriver().stopRecordingScreen();
 		byte[] decodedBytes = Base64.getDecoder().decode(base64String);

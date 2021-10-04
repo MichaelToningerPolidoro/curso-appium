@@ -6,7 +6,6 @@ import java.net.URL;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import br.com.michael.cursoappium.core.BaseTest;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
