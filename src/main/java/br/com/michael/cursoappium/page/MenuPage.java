@@ -15,6 +15,7 @@ public class MenuPage extends BasePage {
 	private static final By seuBarrigaHibrido = getXpath("SeuBarriga Híbrido");
 	private static final By accordion = getXpath("Accordion");
 	private static final By abas = getXpath("Abas");
+	private static final By cliques = getXpath("Cliques");
 	
 	public void acessarFormulario() {
 		clicar(formulario);
@@ -42,6 +43,10 @@ public class MenuPage extends BasePage {
 	
 	public void acessarAbas() {
 		clicar(abas);
+	}
+	
+	public void acessarCliques() {
+		clicar(cliques);
 	}
 	
 	public boolean estaNaTelaInicial() {

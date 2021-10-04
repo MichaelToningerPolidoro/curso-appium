@@ -1,6 +1,8 @@
 package br.com.michael.cursoappium.core;
 
 import static br.com.michael.cursoappium.core.DriverFactory.getDriver;
+import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import org.openqa.selenium.By;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 
 public class BasePage {
 
@@ -32,6 +36,20 @@ public class BasePage {
 
 	protected void clicar(By by) {
 		obterElemento(by).click();
+	}
+	
+	protected void cliqueLongo(By by) {
+		ElementOption elementOption = element(obterElemento(by));
+		LongPressOptions longPressOptions = longPressOptions().withElement(elementOption);
+		new TouchAction<>(getDriver())
+			.longPress(longPressOptions)
+			.perform()
+		;
+	}
+	
+	protected void cliqueDuplo(By by) {
+		clicar(by);
+		clicar(by);
 	}
 
 	protected void selecionarItemCombo(By by, String valor) {
