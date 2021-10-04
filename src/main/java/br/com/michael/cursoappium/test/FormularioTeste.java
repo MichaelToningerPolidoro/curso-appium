@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -85,5 +82,13 @@ public class FormularioTeste extends BaseTest {
 	public void deveAlterarHorario() {
 		formularioPage.alterarHorario();
 		assertTrue(formularioPage.horaEstaCorreta());
+	}
+	
+	@Test
+	public void deveInteragirComSeekbar() {
+		final double porcentagem = 65;
+		formularioPage.moverSeekbar(porcentagem);
+		formularioPage.clicarBotaoSalvar();
+		assertTrue(formularioPage.quantiaSliderEstaCorreto(porcentagem));
 	}
 }

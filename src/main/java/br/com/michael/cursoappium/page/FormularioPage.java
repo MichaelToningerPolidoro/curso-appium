@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import br.com.michael.cursoappium.core.BasePage;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 
 public class FormularioPage extends BasePage {
 
@@ -12,12 +13,15 @@ public class FormularioPage extends BasePage {
 	private final By checkboxData = MobileBy.className("android.widget.CheckBox");
 	private final By switchHorario = MobileBy.AccessibilityId("switch");
 	private final By btnSalvar = MobileBy.AccessibilityId("save");
+	//private final By seekbar = MobileBy.AccessibilityId("slid");
+	private final By seekbar = MobileBy.className("android.widget.SeekBar");
 	private final By btnSalvarDemorado = MobileBy.xpath("//android.widget.TextView[@text='SALVAR DEMORADO']");
 	private final By validacaoSwitch = MobileBy.xpath("//android.widget.TextView[@text='Switch: Off']");
 	private final By validacaoCheckbox = MobileBy.xpath("//android.widget.TextView[@text='Checkbox: Marcado']");
 	private final By opcaoVideoGameSelecionada = MobileBy.xpath("//android.widget.Spinner/android.widget.TextView");
 	private final By datePicker = MobileBy.xpath("//android.widget.TextView[@text='01/01/2000']");
 	private final By timePicker = MobileBy.xpath("//android.widget.TextView[@text='06:00']");
+	
 	
 	private static final String validacaoNomeTemplate = "//android.widget.TextView[@text='Nome: %s']";
 	private static final String validacaoVideoGame = "//android.widget.TextView[@text='Console: %s']";
@@ -67,7 +71,21 @@ public class FormularioPage extends BasePage {
 		clicar(MobileBy.AccessibilityId("40"));
 		clicarPorTexto("OK");
 	}
-			
+	
+	public void moverSeekbar(double porcentagem) {
+		porcentagem /= 100;
+		final int DELTA = 55;
+		final MobileElement seek = obterElemento(seekbar);
+		final int xinicial = seek.getLocation().getX() + DELTA;
+		final int x = (int) (xinicial + ((seek.getSize().getWidth() - 2 * DELTA) * porcentagem));
+		final int y = (int) (seek.getLocation().getY() + (int) (seek.getSize().height / 2));
+		
+		System.out.println(x);
+		System.out.println(y);
+		
+		tap(x, y);
+	}
+	
 	public boolean checkboxEstaSelecionada() {
 		return checkboxEstaSelecionada(checkboxData);
 	}
@@ -107,5 +125,9 @@ public class FormularioPage extends BasePage {
 
 	public boolean horaEstaCorreta() {
 		return existeElementoPorTexto("10:40");
+	}
+
+	public boolean quantiaSliderEstaCorreto(double porcentagem) {
+		return obterTexto(seekbar).equals("Slider: " + porcentagem);
 	}
 }

@@ -1,11 +1,8 @@
 package br.com.michael.cursoappium.core;
 
 import static br.com.michael.cursoappium.core.DriverFactory.getDriver;
-import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
-import static java.time.Duration.ofMillis;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,17 +10,14 @@ import org.openqa.selenium.By;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePage {
 
-	private static MobileElement obterElemento(By by) {
+	protected static MobileElement obterElemento(By by) {
 		return getDriver().findElement(by);
 	}
 
-	private static List<MobileElement> obterElementosPorTexto(String texto) {
+	protected static List<MobileElement> obterElementosPorTexto(String texto) {
 		final By by = MobileBy.xpath(String.format("//*[@text='%s']", texto));
 		return getDriver().findElements(by);
 	}
