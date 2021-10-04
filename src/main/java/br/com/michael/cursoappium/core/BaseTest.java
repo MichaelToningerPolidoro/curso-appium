@@ -104,4 +104,12 @@ public class BaseTest {
 		final String fileName = testName.getMethodName();
 		return RECORDED_VIDEOS_BASE_PATH + fileName + "." + VIDEOS_EXTENSION;
 	}
+	
+	protected void esperar(int millisegundos) {
+		try {
+			Thread.sleep(millisegundos);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -36,6 +36,10 @@ public class AlertPage extends BasePage {
 		clicarPorTexto("SAIR");
 	}
 	
+	public void tentarClicarForaDoAlert() {
+		tap(100, 150);
+	}
+	
 	public String obterTituloAlerta() {
 		return obterTexto(tituloAlerta);
 	}

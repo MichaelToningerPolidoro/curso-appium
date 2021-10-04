@@ -15,18 +15,22 @@ public class AlertTeste extends BaseTest {
 	
 	@Test
 	public void deveConfirmarAlerta() {
-		// acessar menu alerta
 		menuPage.acessarAlertas();
-		// clicar em alerta confirm
 		alertPage.clicarAlertaConfirm();
-		// verificar os textos
 		assertEquals("Info", alertPage.obterTituloAlerta());
 		assertEquals("Confirma a operação?", alertPage.obterTextoAlerta());
-		// confirmar alerta
 		
 		alertPage.clicarConfirm();
 		assertEquals("Confirmado", alertPage.obterTextoAlerta());
 		
 		alertPage.clicarSair();
+	}
+	
+	@Test
+	public void deveTentarClicarForaDoAlerta() {
+		menuPage.acessarAlertas();
+		alertPage.clicarAlertaSimples();
+		esperar(500);
+		alertPage.tentarClicarForaDoAlert();
 	}
 }
