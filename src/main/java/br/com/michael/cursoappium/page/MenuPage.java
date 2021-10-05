@@ -60,7 +60,8 @@ public class MenuPage extends BasePage {
 		clicar(swip);
 	}
 	
-	public void acessarSwipList() {
+	public void acessarSwipeList() {
+		scrollDown(0.9, 0.2);
 		clicar(swipList);
 	}
 	

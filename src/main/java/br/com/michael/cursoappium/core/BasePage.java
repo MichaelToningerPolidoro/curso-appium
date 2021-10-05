@@ -97,6 +97,32 @@ public class BasePage {
 		swipe(fim, inicio);
 	}
 	
+	protected void swipeElement(MobileElement element, double inicio, double fim) {
+		final int y = element.getLocation().getY() + element.getSize().getHeight() / 2;
+		final int xInicial = (int) (element.getSize().getWidth() * inicio);
+		final int xFinal = (int) (element.getSize().getWidth() * fim);
+		
+		if (inicio >= 1) {
+			inicio /= 100;
+		}
+		
+		if (fim >= 1) {
+			fim /= 100;
+		}
+		
+		final PointOption<?> coordenadaInicial = point(xInicial, y);
+		final PointOption<?> coordenadaFinal = point(xFinal, y);
+		final WaitOptions tempoEspera = waitOptions(ofSeconds(1));
+
+		new TouchAction<>(getDriver())
+			.press(coordenadaInicial)
+			.waitAction(tempoEspera)
+			.moveTo(coordenadaFinal)
+			.release()
+			.perform()
+		;
+	}
+	
 	private final void swipe(double inicio, double fim) {
 		if (inicio >= 1) {
 			inicio /= 100;
