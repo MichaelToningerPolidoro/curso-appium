@@ -14,7 +14,7 @@ public class OpcaoEscondidaTeste extends BaseTest {
 	@Test
 	public void deveEncontrarOpcaoEscondida() {
 		esperar(2000);
-		menuPage.realizarScroll(0.9, 0.1);
+		menuPage.realizarScrollUp(0.9, 0.1);
 		menuPage.acessarOpcaoEscondida();
 		alertPage.clicarOk();
 	}

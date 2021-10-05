@@ -11,6 +11,8 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -52,8 +54,15 @@ public class BasePage {
 		;
 	}
 	
-	protected void scroll(double inicio, double fim) {
-		
+	protected void scrollDown(double inicio, double fim) {
+		scroll(inicio, fim);
+	}
+	
+	protected void scrollUp(double inicio, double fim) {
+		scroll(fim, inicio);
+	}
+	
+	private final void scroll(double inicio, double fim) {
 		if (inicio >= 1) {
 			inicio /= 100;
 		}
@@ -69,6 +78,41 @@ public class BasePage {
 		
 		final PointOption<?> coordenadaInicial = PointOption.point(x, yInicial);
 		final PointOption<?> coordenadaFinal = point(x, yFinal);
+		final WaitOptions tempoEspera = waitOptions(ofSeconds(1));
+
+		new TouchAction<>(getDriver())
+			.press(coordenadaInicial)
+			.waitAction(tempoEspera)
+			.moveTo(coordenadaFinal)
+			.release()
+			.perform()
+		;
+	}
+	
+	protected void swipeLeft(double inicio, double fim) {
+		swipe(inicio, fim);
+	}
+	
+	protected void swipeRight(double inicio, double fim) {
+		swipe(fim, inicio);
+	}
+	
+	private final void swipe(double inicio, double fim) {
+		if (inicio >= 1) {
+			inicio /= 100;
+		}
+		
+		if (fim >= 1) {
+			fim /= 100;
+		}
+		
+		final Dimension size = getDriver().manage().window().getSize();
+		final int y = size.getHeight() / 2;
+		final int xInicial = (int) (size.getWidth() * inicio);
+		final int xFinal = (int) (size.getWidth() * fim);
+		
+		final PointOption<?> coordenadaInicial = point(xInicial, y);
+		final PointOption<?> coordenadaFinal = point(xFinal, y);
 		final WaitOptions tempoEspera = waitOptions(ofSeconds(1));
 
 		new TouchAction<>(getDriver())
@@ -115,5 +159,10 @@ public class BasePage {
 
 	protected void tap(int x, int y) {
 		new TouchAction<>(getDriver()).tap(point(x, y));
+	}
+	
+	protected void waitElementBeVisible(By by) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), 20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
 }
