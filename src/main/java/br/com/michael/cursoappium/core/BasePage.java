@@ -2,18 +2,25 @@ package br.com.michael.cursoappium.core;
 
 import static br.com.michael.cursoappium.core.DriverFactory.getDriver;
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofSeconds;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePage {
 
@@ -43,6 +50,34 @@ public class BasePage {
 		LongPressOptions longPressOptions = longPressOptions().withElement(elementOption);
 		new TouchAction<>(getDriver())
 			.longPress(longPressOptions)
+			.perform()
+		;
+	}
+	
+	protected void scroll(double inicio, double fim) {
+		
+		if (inicio >= 1) {
+			inicio /= 100;
+		}
+		
+		if (fim >= 1) {
+			fim /= 100;
+		}
+		
+		final Dimension size = getDriver().manage().window().getSize();
+		final int x = size.getWidth() / 2;
+		final int yInicial = (int) (size.getHeight() * inicio);
+		final int yFinal = (int) (size.getHeight() * fim);
+		
+		final PointOption<?> coordenadaInicial = PointOption.point(x, yInicial);
+		final PointOption<?> coordenadaFinal = point(x, yFinal);
+		final WaitOptions tempoEspera = waitOptions(ofSeconds(1));
+
+		new TouchAction<>(getDriver())
+			.press(coordenadaInicial)
+			.waitAction(tempoEspera)
+			.moveTo(coordenadaFinal)
+			.release()
 			.perform()
 		;
 	}

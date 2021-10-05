@@ -31,6 +31,7 @@ public class BaseTest {
 	@BeforeClass
 	public static void initialSetup() {
 		//deleteEvidence();
+		DriverFactory.getDriver();
 	}
 
 	@Before

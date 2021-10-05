@@ -16,6 +16,7 @@ public class MenuPage extends BasePage {
 	private static final By accordion = getXpath("Accordion");
 	private static final By abas = getXpath("Abas");
 	private static final By cliques = getXpath("Cliques");
+	private static final By opcaoEscondida = getXpath("Opção bem escondida");
 	
 	public void acessarFormulario() {
 		clicar(formulario);
@@ -47,6 +48,14 @@ public class MenuPage extends BasePage {
 	
 	public void acessarCliques() {
 		clicar(cliques);
+	}
+	
+	public void acessarOpcaoEscondida() {
+		clicar(opcaoEscondida);
+	}
+	
+	public void realizarScroll(double inicio, double fim) {
+		scroll(inicio, fim);
 	}
 	
 	public boolean estaNaTelaInicial() {
