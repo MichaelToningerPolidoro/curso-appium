@@ -19,6 +19,7 @@ public class MenuPage extends BasePage {
 	private static final By opcaoEscondida = getXpath("Opção bem escondida");
 	private static final By swip = getXpath("Swipe");
 	private static final By swipList = getXpath("Swipe List");
+	private static final By dragNDrop = getXpath("Drag and drop");
 	
 	public void acessarFormulario() {
 		clicar(formulario);
@@ -63,6 +64,11 @@ public class MenuPage extends BasePage {
 	public void acessarSwipeList() {
 		scrollDown(0.9, 0.2);
 		clicar(swipList);
+	}
+	
+	public void acessarDragNDrop() {
+		scrollDown(0.9, 0.2);
+		clicar(dragNDrop);
 	}
 	
 	public void realizarScrollUp(double inicio, double fim) {

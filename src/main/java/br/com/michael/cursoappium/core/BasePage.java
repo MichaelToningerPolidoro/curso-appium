@@ -27,6 +27,10 @@ public class BasePage {
 	protected static MobileElement obterElemento(By by) {
 		return getDriver().findElement(by);
 	}
+	
+	protected static List<MobileElement> obterElementos(By by) {
+		return getDriver().findElements(by);
+	}
 
 	protected static List<MobileElement> obterElementosPorTexto(String texto) {
 		final By by = MobileBy.xpath(String.format("//*[@text='%s']", texto));
