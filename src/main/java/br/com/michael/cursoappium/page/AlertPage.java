@@ -14,6 +14,7 @@ public class AlertPage extends BasePage {
 	private static final By alertaRestritivo = MobileBy.xpath("//android.widget.TextView[@text='ALERTA RESTRITIVO']");
 	private static final By alertaConfirm = MobileBy.xpath("//android.widget.TextView[@text='ALERTA CONFIRM']");
 	
+	private static final By botaoOkAlerta = MobileBy.id("android:id/button1");
 	private static final By botaoConfirmarAlerta = MobileBy.id("android:id/button2");
 	
 	public void clicarAlertaSimples() {
@@ -30,6 +31,10 @@ public class AlertPage extends BasePage {
 	
 	public void clicarConfirm() {
 		clicar(botaoConfirmarAlerta);
+	}
+	
+	public void clicarOk() {
+		clicar(botaoOkAlerta);
 	}
 	
 	public void clicarSair() {

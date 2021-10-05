@@ -7,7 +7,6 @@ import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofSeconds;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -16,7 +15,6 @@ import org.openqa.selenium.Dimension;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;

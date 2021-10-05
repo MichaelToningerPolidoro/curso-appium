@@ -16,7 +16,7 @@ public class DriverFactory {
 	private DriverFactory() {
 	}
 	
-	public static AndroidDriver<MobileElement> getDriver() {
+	public static final AndroidDriver<MobileElement> getDriver() {
 		if (driver == null) {
 			createDriver();
 		}
@@ -24,7 +24,7 @@ public class DriverFactory {
 		return driver;
 	}
 
-	private static void createDriver() {
+	private static final void createDriver() {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");
 //		Não precisa pois é android, se fosse IOS sim
@@ -44,14 +44,15 @@ public class DriverFactory {
 		}
 	}
 	
-	public static void killDriver() {
+	public static final void killDriver() {
 		if (driver != null) {
+			driver.closeApp();
 			driver.quit();
 			driver = null;
 		}
 	}
 	
-	public static void restartAPP() {
+	public static final void restartAPP() {
 		if (driver != null) {
 			driver.resetApp();
 		}
